@@ -1,30 +1,30 @@
 # CSCI2270-Project
 CSCI2270 Project Repository
 
-# Project summary:
+## Project summary:
 
 PLACEHOLDER. Not yet decided.
 
-# How to run:
+## How to run:
 
 PLACEHOLDER.
 
-# Dependencies:
+## Dependencies:
 
 PLACEHOLDER.
 
-# System Requirements:
+## System Requirements:
 
 PLACEHOLDER.
 
-# Group Members:
+## Group Members:
 
 PLACEHOLDER.
 
-# Contributors:
+## Contributors:
 
 PLACEHOLDER.
 
-# Open issues/bugs:
+## Open issues/bugs:
 
 PLACEHOLDER.
