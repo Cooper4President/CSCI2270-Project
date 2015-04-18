@@ -1,4 +1,4 @@
-# CSCI2270-Project
+# CSCI2270 Final Project
 CSCI2270 Project Repository
 
 ## Project summary:
