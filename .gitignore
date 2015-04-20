@@ -1,0 +1,17 @@
+*.opensdf
+Centrality/Centrality.sdf
+*.sln
+Centrality/Centrality.v12.suo
+*.vcxproj
+Centrality/Centrality.vcxproj.filters
+*.log
+*.exe
+Centrality/Debug/Centrality.exe.lastcodeanalysissucceeded
+*.ilk
+*.pdb
+Centrality/Debug/Centrality.tlog/Centrality.lastbuildstate
+*.tlog
+Centrality/Debug/main.nativecodeanalysis.xml
+*.obj
+Centrality/Debug/vc.nativecodeanalysis.all.xml
+*.idb
