@@ -1,5 +1,6 @@
 # CSCI2270 Final Project
-Cooper's CSCI2270 Project: A utility library for node graph centrality analysis
+Cooper's CSCI2270 Project.
+Centrality: A utility library for node graph centrality analysis.
 
 ## Project summary:
 Summary will be updated as development progresses. Project is currently in the concept stage.
