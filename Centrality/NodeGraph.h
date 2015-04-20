@@ -16,7 +16,7 @@ public:
 	NodeGraph();
 	~NodeGraph();
 	void AddNode(std::string name, int score);
-	void AddEdge(std::string startNode, std::string endNode);
+	void AddEdge(std::string start, std::string end);
 private:
 	std::vector<Node> nodes;
 };
