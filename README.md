@@ -36,7 +36,7 @@ Cooper Matous
 
 ## Contributors:
 
-PLACEHOLDER.
+None at this time.
 
 ## Open issues/bugs:
 
