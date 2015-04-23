@@ -26,7 +26,7 @@ private:
 	std::vector<double> scores;
 	//matrix that stores adjacency status for all possible pairs of nodes
 	//stores 0 for 'not connected'(default) and 1 for 'connected'
-	std::vector<std::vector<int>> adjacency;
+	std::vector<std::vector<int> > adjacency;
 };
 
 
