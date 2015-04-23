@@ -12,15 +12,23 @@ TODO: Add functionality for loading in adjacency matrices from text files, and a
 
 ## How to run:
 
-PLACEHOLDER.
+Download all .cpp and .h files from "Centrality" folder, and compile. CodeBlocks(with default GCC compiler) is not required, but does simplify the build process.
+
+The recommended (easy) way to build the code is to create a new CodeBlocks 'console' project and add all the downloaded files to it. Make sure to build the project with the 'C++11 Standard' flag enabled in compiler settings.
+
+If using a different IDE and/or compiler, make sure to enable C++11 support, and take note of the information in "System Requirements" below.
 
 ## Dependencies:
 
-PLACEHOLDER.
+No external dependencies.
 
 ## System Requirements:
 
-PLACEHOLDER.
+No special hardware/OS requirements. Code written to be platform-neutral and should run on most modern x86/x86-64 hardware within Windows, Mac OSX, and most Linux distros.
+
+Compiler MUST support and be set to use C++11 standard, code will not compile without it.
+
+Project is compiled and tested with Microsoft Visual Studio compiler (in Windows 8.1) and GNU GCC compiler (in Windows 8.1 and Xubuntu Linux). Recommended to build with MSVS on Windows, and GCC on Mac & Linux. Code not tested with other compilers and may or may not build with them.
 
 ## Group Members:
 
