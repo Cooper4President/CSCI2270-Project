@@ -10,6 +10,8 @@ struct Node;
 
 struct AdjNode
 {
+	/*weight property is not currently used by any algorithms in library but is 
+	included in case a new algorithm needs to make use of it*/
 	double weight;
 	Node* node;
 };
