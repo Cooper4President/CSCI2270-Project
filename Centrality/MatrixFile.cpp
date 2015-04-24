@@ -94,16 +94,19 @@ void MatrixFile::ReadFileAdjacency(std::string filename){
 	int indexColumn = 0;
 	while (inputFile.good()){
 		indexRow++;
+		indexColumn = 0;
 		lineStream.clear();
 		line = "";
 		getline(inputFile, line);
 		lineStream << line;
 
 		while (lineStream.good()){
-			indexColumn++;
 			string token2;
 			getline(lineStream, token2, ',');
-			StoreConnection(names[indexRow], names[indexColumn]);
+			if(indexColumn > 0){
+				StoreConnection(names[indexRow - 1], names[indexColumn - 1]);
+			}
+			indexColumn++;
 		}
 	}
 
