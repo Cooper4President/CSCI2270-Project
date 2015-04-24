@@ -5,6 +5,7 @@ CSCI 2270 - Hoenigman
 */
 
 #include "NodeGraph.h"
+#include "MatrixFile.h"
 #include <iostream>
 #include <stdlib.h>
 

@@ -1,6 +1,7 @@
 #include "MatrixFile.h"
 #include <iostream>
 #include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -45,12 +46,164 @@ void MatrixFile::ClearBufferedDataAll(){
 	ClearBufferedData(true, true, true);
 }
 
-void MatrixFile::StoreConnection(std::string nameFrom, std::string nameTo){
+//getter functions BEGIN
+std::vector<std::string> MatrixFile::GetNames(){
+	return names;
+}
 
+std::vector<double> MatrixFile::GetScores(){
+	return scores;
+}
+
+std::vector<std::vector<int> > MatrixFile::GetAdjacency(){
+	return adjacency;
+}
+//getter functions END
+
+void MatrixFile::ReadFileAdjacency(std::string filename){
+	ifstream inputFile;
+	inputFile.open(filename.c_str());
+	if (inputFile.is_open() == false){
+		cout << "Error opening file: " << filename << endl;
+		return;
+	}
+
+	stringstream lineStream;
+	string line;
+	//read in top row
+	getline(inputFile, line);
+	lineStream << line;
+	//discard first element of top row
+	string discard;
+	getline(lineStream, discard);
+	//read in names
+	vector<string> tempNames;
+	while (lineStream.good()){
+		string token1;
+		getline(lineStream, token1, ',');
+		tempNames.push_back(token1);
+	}
+
+	//store names in buffer with default score (1)
+	for (int i = 0; i < tempNames.size(); i++){
+		StoreNode(tempNames[i], 1);
+	}
+
+	//read in connections and store data in buffer
+	int indexRow = 0;
+	int indexColumn = 0;
+	while (inputFile.good()){
+		indexRow++;
+		lineStream.clear();
+		line = "";
+		getline(inputFile, line);
+		lineStream << line;
+
+		while (lineStream.good()){
+			indexColumn++;
+			string token2;
+			getline(lineStream, token2, ',');
+			StoreConnection(names[indexRow], names[indexColumn]);
+		}
+	}
+
+	inputFile.close();
+}
+
+void MatrixFile::ReadFileScores(std::string filename){
+	ifstream inputFile;
+	inputFile.open(filename.c_str());
+	if (inputFile.is_open() == false){
+		cout << "Error opening file: " << filename << endl;
+		return;
+	}
+
+	vector<string> tempNames;
+	vector<double> tempScores;
+	stringstream lineStream;
+	string line;
+	//read in names
+	getline(inputFile, line);
+	lineStream << line;
+	while (lineStream.good()){
+		string token1;
+		getline(lineStream, token1, ',');
+		tempNames.push_back(token1);
+	}
+
+	lineStream.clear();
+
+	//read in scores
+	line = "";
+	getline(inputFile, line);
+	lineStream << line;
+	while (lineStream.good()){
+		string token2;
+		getline(lineStream, token2, ',');
+		double tokenScore = atof(token2.c_str());
+		tempScores.push_back(tokenScore);
+	}
+
+	//store names and scores in buffer
+	for (int i = 0; i < tempNames.size(); i++){
+		StoreNode(tempNames[i], tempScores[i]);
+	}
+
+	inputFile.close();
+}
+
+void MatrixFile::StoreConnection(std::string nameFrom, std::string nameTo){
+	//verify both nodes exist first
+	bool fromExists = false;
+	bool toExists = false;
+	int fromIndex, toIndex;
+	for (int i = 0; i < names.size(); i++){
+		if (names[i] == nameFrom){
+			fromExists = true;
+			fromIndex = i;
+		}
+		if (names[i] == nameTo){
+			toExists = true;
+			toIndex = i;
+		}
+		if (fromExists && toExists){
+			break;
+		}
+	}
+
+	if (fromExists == false || toExists == false){
+		cout << "Could not make connection. At least one node does not exist." << endl;
+		return;
+	}
+
+	//add connection to adjacency matrix
+	adjacency[fromIndex][toIndex] = 1;
 }
 
 void MatrixFile::StoreNode(std::string name, double score){
+	for (int i = 0; i < names.size(); i++){
+		if (names[i] == name){
+			//node with same name already exists, so overwrite it
+			names[i] = name;
+			scores[i] = score;
+			return;
+		}
+	}
 
+	names.push_back(name);
+	scores.push_back(score);
+
+	//expand adjacency matrix to proper size and fill new slots with default value (0 : 'no connection')
+	//add new column and fill with 0's
+	for (int i = 0; i < adjacency.size(); i++){
+		adjacency[i].push_back(0);
+	}
+	//add new row and fill with 0's
+	vector<int> row;
+	for (int n = 0; n < name.size(); n++){
+		row.push_back(0);
+	}
+	adjacency.push_back(row);
 }
 
 /*

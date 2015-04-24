@@ -11,6 +11,11 @@ public:
 	~MatrixFile();
 	void ClearBufferedData(bool nameData, bool scoreData, bool adjData);
 	void ClearBufferedDataAll();
+	std::vector<std::string> GetNames();
+	std::vector<double> GetScores();
+	std::vector<std::vector<int> > GetAdjacency();
+	void ReadFileAdjacency(std::string filename);
+	void ReadFileScores(std::string filename);
 	void StoreConnection(std::string nameFrom, std::string nameTo);
 	void StoreNode(std::string name, double score);
 	void WriteFileAdjacency(std::string filename);
