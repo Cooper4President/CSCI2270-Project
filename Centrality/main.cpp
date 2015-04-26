@@ -62,7 +62,7 @@ int main(int argc, char* argv[]){
 			}
 			for (int j = 0; j < adjacency.size(); j++){
 				for (int k = 0; k < adjacency[j].size(); k++){
-					if ((adjacency[j])[k] = 1){
+					if ((adjacency[j])[k] == 1){
 						graph.AddEdge(nodeNames[j], nodeNames[k], 1);
 					}
 				}
@@ -78,8 +78,10 @@ int main(int argc, char* argv[]){
 			nodeList = graph.GetNodes();
 			//output data to file
 			fileIO.ClearBufferedDataAll();
+			for (int x = 0; x < nodeList.size(); x++){
+				fileIO.StoreNode(nodeList[x].name, nodeList[x].score);
+			}
 			for (int i = 0; i < nodeList.size(); i++){
-				fileIO.StoreNode(nodeList[i].name, nodeList[i].score);
 				for (int k = 0; k < nodeList[i].adj.size(); k++){
 					fileIO.StoreConnection(nodeList[i].name, nodeList[i].adj[k]->node->name);
 				}
