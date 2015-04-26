@@ -21,7 +21,7 @@ int main(int argc, char* argv[]){
 	while (menuLoop){
 		cout << "---------------------------\n---CENTRALITY: Main Menu---\n---------------------------" << endl;
 		cout << "1. Load network from file\n2. Export network to file\n3. Add node manually\n4. Add edge manually" << endl;
-		cout << "5. Print all nodes in network\n6. Compute Eigenvector Centrality\n7. placeholder\n 8. Quit" << endl;
+		cout << "5. Print all nodes in network\n6. Compute Eigenvector Centrality\n7. placeholder\n8. Quit" << endl;
 		cout << "---------------------------\nSelect choice: " << endl;
 
 		string choiceInput = "";
@@ -62,7 +62,7 @@ int main(int argc, char* argv[]){
 			}
 			for (int j = 0; j < adjacency.size(); j++){
 				for (int k = 0; k < adjacency[j].size(); k++){
-					if (adjacency[j][k] = 1){
+					if ((adjacency[j])[k] = 1){
 						graph.AddEdge(nodeNames[j], nodeNames[k], 1);
 					}
 				}

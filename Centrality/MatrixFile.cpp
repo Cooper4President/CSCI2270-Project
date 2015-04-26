@@ -73,9 +73,6 @@ void MatrixFile::ReadFileAdjacency(std::string filename){
 	//read in top row
 	getline(inputFile, line);
 	lineStream << line;
-	//discard first element of top row
-	string discard;
-	getline(lineStream, discard);
 	//read in names
 	vector<string> tempNames;
 	while (lineStream.good()){
@@ -84,8 +81,8 @@ void MatrixFile::ReadFileAdjacency(std::string filename){
 		tempNames.push_back(token1);
 	}
 
-	//store names in buffer with default score (1)
-	for (int i = 0; i < tempNames.size(); i++){
+	//store nodes in buffer with default score (1)
+	for (int i = 1; i < tempNames.size(); i++){
 		StoreNode(tempNames[i], 1);
 	}
 
@@ -93,21 +90,31 @@ void MatrixFile::ReadFileAdjacency(std::string filename){
 	int indexRow = 0;
 	int indexColumn = 0;
 	while (inputFile.good()){
-		indexRow++;
 		indexColumn = 0;
 		lineStream.clear();
 		line = "";
 		getline(inputFile, line);
 		lineStream << line;
 
+		if (indexRow > names.size()){
+			break;
+		}
+
 		while (lineStream.good()){
+			if (indexColumn > names.size()){
+				break;
+			}
 			string token2;
 			getline(lineStream, token2, ',');
-			if(indexColumn > 0){
-				StoreConnection(names[indexRow - 1], names[indexColumn - 1]);
+			if (indexColumn > 0){
+				if (atoi(token2.c_str()) == 1){
+					StoreConnection(names[indexRow], names[indexColumn - 1]);
+				}
 			}
 			indexColumn++;
 		}
+
+		indexRow++;
 	}
 
 	inputFile.close();
@@ -203,7 +210,7 @@ void MatrixFile::StoreNode(std::string name, double score){
 	}
 	//add new row and fill with 0's
 	vector<int> row;
-	for (int n = 0; n < name.size(); n++){
+	for (int n = 0; n < names.size(); n++){
 		row.push_back(0);
 	}
 	adjacency.push_back(row);
