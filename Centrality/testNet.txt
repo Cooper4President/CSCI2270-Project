@@ -1,4 +1,0 @@
-UNUSED,Node1,Node2,Node3
-Node1,0,0,0
-Node2,1,0,0
-Node3,0,1,0

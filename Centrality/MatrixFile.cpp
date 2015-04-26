@@ -182,7 +182,11 @@ void MatrixFile::StoreConnection(std::string nameFrom, std::string nameTo){
 	}
 
 	if (fromExists == false || toExists == false){
-		cout << "Could not make connection. At least one node does not exist." << endl;
+		cout << "Could not make connection. At least one node does not exist: " <<nameFrom<<" , "<<nameTo<< endl;
+		return;
+	}
+	if (nameFrom == nameTo){
+		cout << "Node cannot connect to itself: " << nameFrom << endl;
 		return;
 	}
 
@@ -191,14 +195,14 @@ void MatrixFile::StoreConnection(std::string nameFrom, std::string nameTo){
 }
 
 void MatrixFile::StoreNode(std::string name, double score){
-	for (int i = 0; i < names.size(); i++){
+	/*for (int i = 0; i < names.size(); i++){
 		if (names[i] == name){
 			//node with same name already exists, so overwrite it
 			names[i] = name;
 			scores[i] = score;
 			return;
 		}
-	}
+	}*/
 
 	names.push_back(name);
 	scores.push_back(score);
