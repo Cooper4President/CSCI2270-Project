@@ -5,8 +5,6 @@ Centrality: A utility library for node graph centrality analysis.
 
   This library is intended to provide tools for quantifying centrality in node graphs/networks. Centrality is a measure of the 'importance' of a node within a given network. Node graph centrality algorithms are used in many applications, such as social network analytics, and Google's PageRank algorithm. The core feature of this library is to build node graphs from adjacency matrices and calculate the centrality 'scores' of each node. Functionality is included to output a network (names and connections) to a text file, in the form of an adjacency matrix. The library is also able to load data from these files. The user is able to view names and scores of all nodes in the network from within the program, as well as manually add new nodes and connections/edges. Currently implemented centrality algorithms are Eigenvector Centrality, and Degree Centrality.
 
-TODO: Add functionality for loading in adjacency matrices from text files, and automatically building nodegraphs from the matrices.
-
 ## How to run:
 
 Download all .cpp and .h files from "Centrality" folder, and compile. You can also download the "exampleNetwork.txt" file from the same location to aid in testing the program. CodeBlocks(with default GCC compiler) is not required, but does simplify the build process.
