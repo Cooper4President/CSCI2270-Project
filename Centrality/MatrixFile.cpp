@@ -6,24 +6,38 @@
 using namespace std;
 
 
+/*
+Class constructor.
+Currently empty.
+*/
 MatrixFile::MatrixFile()
 {
 }
 
 
+/*
+Class destructor.
+Currently empty.
+*/
 MatrixFile::~MatrixFile()
 {
 }
 
+
 /*
 void ClearBufferedData(bool, bool, bool);
-Clears stored input/output buffer data for the categories selected in arguments.
+
+Clears stored input/output buffer data for the categories selected in arguments. All three arguments are booleans,
+which if entered as true will erase the corresponding data buffer.
+The arguments correspond to the Names, Scores, and Adjacency data buffers, respectively.
 
 Example:
 To erase the buffered node names, but leave all other buffers intact:
-ClearBufferedData(true, false, false);
+MatrixFile ioStuff;
+ioStuff.ClearBufferedData(true, false, false);
 
-Will work even if buffer(s) are already empty.
+Pre: Will work even if buffer(s) are already empty.
+Post: Some or all of the Name, Score, and Adjacency data buffers will be erased, depending on which arguments are entered.
 */
 void MatrixFile::ClearBufferedData(bool nameData, bool scoreData, bool adjData){
 	if (nameData){
@@ -39,12 +53,23 @@ void MatrixFile::ClearBufferedData(bool nameData, bool scoreData, bool adjData){
 	}
 }
 
+
 /*
+void MatrixFile::ClearBufferedDataAll();
+
 Calls ClearBufferedData with all true arguments. This erases input/output data from all categories.
+See description of ClearBufferedData() method for more information.
+
+Example:
+MatrixFile ioStuff;
+ioStuff.ClearBufferedDataAll();
+
+Pre/Post: same as ClearBufferedData() method, listed above.
 */
 void MatrixFile::ClearBufferedDataAll(){
 	ClearBufferedData(true, true, true);
 }
+
 
 //getter functions BEGIN
 std::vector<std::string> MatrixFile::GetNames(){
@@ -59,6 +84,7 @@ std::vector<std::vector<int> > MatrixFile::GetAdjacency(){
 	return adjacency;
 }
 //getter functions END
+
 
 void MatrixFile::ReadFileAdjacency(std::string filename){
 	ifstream inputFile;
