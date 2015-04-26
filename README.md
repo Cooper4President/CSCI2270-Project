@@ -12,9 +12,10 @@ TODO: Add functionality for loading in adjacency matrices from text files, and a
 
 ## How to run:
 
-Download all .cpp and .h files from "Centrality" folder, and compile. CodeBlocks(with default GCC compiler) is not required, but does simplify the build process.
+Download all .cpp and .h files from "Centrality" folder, and compile. You can also download the "exampleNetwork.txt" file from the same location to aid in testing the program. CodeBlocks(with default GCC compiler) is not required, but does simplify the build process.
 
-The recommended (easy) way to build the code is to create a new CodeBlocks 'console' project and add all the downloaded files to it. Make sure to build the project with the 'C++11 Standard' flag enabled in compiler settings.
+The recommended (easy) way to build the code is to create a new CodeBlocks 'console' project and add all the downloaded h and cpp files to it. The "main.cpp" file contains the main() entrypoint method for the program. Make sure to build the project with the 'C++11 Standard' flag enabled in compiler settings.
+When the program is running, try loading the "exampleNetwork.txt" (enter name without quotes) file to test it out.
 
 If using a different IDE and/or compiler, make sure to enable C++11 support, and take note of the information in "System Requirements" below.
 
@@ -40,3 +41,10 @@ None at this time.
 
 ## Open issues/bugs:
 
+None at this time.
+
+## Ideas for new features:
+
+- Make destructor method of NodeGraph delete all stored nodes/data/etc and free memory.
+- Implement more, different algorithms for centrality calculation techniques. Algorithms already implemented: 'Eigenvector' & 'Degree'
+- Add functionality to manually erase individual nodes/edges from the active network
