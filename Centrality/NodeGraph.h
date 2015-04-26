@@ -29,6 +29,7 @@ public:
 	void AddNode(std::string name, double score);
 	void AddEdge(std::string start, std::string end, double weight);
 	void CentralityEigenvector();
+	std::vector<Node> GetNodes();
 	void PrintNodes();
 private:
 	std::vector<Node> nodes;

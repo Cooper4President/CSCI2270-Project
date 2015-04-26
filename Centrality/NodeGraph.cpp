@@ -100,6 +100,10 @@ void NodeGraph::CentralityEigenvector(){
 	}
 }
 
+vector<Node> NodeGraph::GetNodes(){
+	return nodes;
+}
+
 void NodeGraph::PrintNodes(){
 	//print names of all nodes and their score
 	if (nodes.size() == 0){
