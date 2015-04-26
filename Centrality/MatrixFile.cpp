@@ -86,6 +86,19 @@ std::vector<std::vector<int> > MatrixFile::GetAdjacency(){
 //getter functions END
 
 
+/*
+void MatrixFile::ReadFileAdjacency(std::string);
+
+Reads in network (node names and adjacency) data from a file, and puts it into the input/output data buffer. Argument is the file name to read from.
+
+Example:
+MatrixFile ioStuff;
+ioStuff.ReadFileAdjacency("exampleNetwork.txt");
+
+Pre: File must exist. It is recommended to clear the IO buffers before loading in new data from a file.
+Post: Data will be taken from the file and stored in the IO buffers. If the buffers had any data in them previously, it will NOT
+be erased. The new data will simply be appended. This may cause unintended behavior, so it is recommended to clear the buffers before loading a file.
+*/
 void MatrixFile::ReadFileAdjacency(std::string filename){
 	ifstream inputFile;
 	inputFile.open(filename.c_str());
@@ -146,6 +159,19 @@ void MatrixFile::ReadFileAdjacency(std::string filename){
 	inputFile.close();
 }
 
+/*
+void MatrixFile::ReadFileScores(std::string);
+
+Reads in node score data from a file, and puts it into the input/output data buffer. Argument is the file name to read from.
+
+Example:
+MatrixFile ioStuff;
+ioStuff.ReadFileScores("aScoreFile.txt");
+
+Pre: File must exist. It is recommended to clear the IO buffers before loading in new data from a file.
+Post: Data will be taken from the file and stored in the IO buffers. If the buffers had any data in them previously, it will NOT
+be erased. The new data will simply be appended. This may cause unintended behavior, so it is recommended to clear the buffers before loading a file.
+*/
 void MatrixFile::ReadFileScores(std::string filename){
 	ifstream inputFile;
 	inputFile.open(filename.c_str());
@@ -188,6 +214,20 @@ void MatrixFile::ReadFileScores(std::string filename){
 	inputFile.close();
 }
 
+
+/*
+void MatrixFile::StoreConnection(std::string, std::string);
+
+Stores connection/edge data into the input/output data buffer. First argument is the name of the node the edge starts at.
+Second argument is the name of the node the edge ends at.
+
+Example:
+MatrixFile ioStuff;
+ioStuff.StoreConnection("firstNode", "secondNode");
+
+Pre: Both nodes must already have been stored in the buffer with StoreNode(), before storing a connection.
+Post: The connection/edge data will be stored into the adjacency data buffer, ready to be written to a file.
+*/
 void MatrixFile::StoreConnection(std::string nameFrom, std::string nameTo){
 	//verify both nodes exist first
 	bool fromExists = false;
@@ -220,6 +260,19 @@ void MatrixFile::StoreConnection(std::string nameFrom, std::string nameTo){
 	adjacency[fromIndex][toIndex] = 1;
 }
 
+
+/*
+void MatrixFile::StoreNode(std::string, double);
+
+Stores information about a node into the input/output data buffer. Argument 1 is the node name. Argument 2 is its score value.
+
+Example:
+MatrixFile ioStuff;
+ioStuff.StoreNode("MyNode", 1);
+
+Pre: None.
+Post: Node data will be stored into the IO data buffer, ready to be written to a file.
+*/
 void MatrixFile::StoreNode(std::string name, double score){
 	/*for (int i = 0; i < names.size(); i++){
 		if (names[i] == name){
@@ -248,13 +301,16 @@ void MatrixFile::StoreNode(std::string name, double score){
 
 /*
 void MatrixFile::WriteFileAdjacency(string);
+
 Creates a file with the specified filename. Writes all node names and connections from buffer to the file.
 Data is stored in the form of an adjacency matrix, where a value of 0 means 'no connection', 1 means 'connected'.
 
 Example:
-WriteFileAdjacency("MyAdjacencyMatrix.txt");
+MatrixFile ioStuff;
+ioStuff.WriteFileAdjacency("MyAdjacencyMatrix.txt");
 
-Adjacency matrix buffer must be populated for this work correctly.
+Pre: Adjacency matrix buffer must be populated for this work correctly.
+Post: new file will be created with the data in it.
 */
 void MatrixFile::WriteFileAdjacency(std::string filename){
 	ofstream outputFile;
@@ -281,10 +337,15 @@ void MatrixFile::WriteFileAdjacency(std::string filename){
 
 /*
 void MatrixFile::WriteFileScores(string);
+
 Creates a file with the specified filename. Writes all node names and scores from the buffer to the file.
 
 Example:
-WriteFileScores("MyNodeScores.txt");
+MatrixFile ioStuff;
+ioStuff.WriteFileScores("MyNodeScores.txt");
+
+Pre: Score data must be populated
+Post: new file will be created with the data stored in it
 */
 void MatrixFile::WriteFileScores(std::string filename){
 	ofstream outputFile;
