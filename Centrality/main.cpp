@@ -15,10 +15,12 @@ using namespace std;
 int main(int argc, char* argv[]){
 
 	NodeGraph graph;
+	//the MatrixFile class provides utilities for storing and loading nodegraph network data in txt files
 	MatrixFile fileIO;
 
 	bool menuLoop = true;
 	while (menuLoop){
+		//print menu options
 		cout << "---------------------------\n---CENTRALITY: Main Menu---\n---------------------------" << endl;
 		cout << "1. Load network from file\n2. Export network to file\n3. Add node manually\n4. Add edge manually" << endl;
 		cout << "5. Print all nodes in network\n6. Compute Eigenvector Centrality\n7. Compute Degree Centrality\n8. Quit" << endl;
