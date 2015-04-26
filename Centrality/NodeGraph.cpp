@@ -62,8 +62,28 @@ void NodeGraph::AddEdge(string start, string end, double weight){
 	startNode->adj.push_back(addAdj);
 }
 
+void NodeGraph::CentralityDegree(){
+	for (int i = 0; i < nodes.size(); i++){
+		for (int k = 0; k < nodes[i].adj.size(); k++){
+			nodes[i].score += nodes[i].adj[k]->node->score;
+		}
+	}
+
+	//find highest score and use this to normalize
+	double maxScore = 0;
+	for (int i = 0; i < nodes.size(); i++){
+		if (nodes[i].score > maxScore){
+			maxScore = nodes[i].score;
+		}
+	}
+
+	//normalize all scores
+	for (int x = 0; x < nodes.size(); x++){
+		nodes[x].score = nodes[x].score / maxScore;
+	}
+}
+
 void NodeGraph::CentralityEigenvector(){
-	//THIS FUNCTION IS CURRENTLY BUGGED AND MAY RETURN IMPROPER SCORE VALUES
 	//calculates centrality scores for all nodes by the eigenvector centrality method
 	//this method is intended to be used in multiple iterations
 	//the more iterations, the more accurate the estimation of the dominant eigenvector of the adjacency matrix

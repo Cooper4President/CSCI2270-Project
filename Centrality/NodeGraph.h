@@ -28,6 +28,7 @@ public:
 	~NodeGraph();
 	void AddNode(std::string name, double score);
 	void AddEdge(std::string start, std::string end, double weight);
+	void CentralityDegree();
 	void CentralityEigenvector();
 	std::vector<Node> GetNodes();
 	void PrintNodes();

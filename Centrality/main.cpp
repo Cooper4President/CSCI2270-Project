@@ -21,7 +21,7 @@ int main(int argc, char* argv[]){
 	while (menuLoop){
 		cout << "---------------------------\n---CENTRALITY: Main Menu---\n---------------------------" << endl;
 		cout << "1. Load network from file\n2. Export network to file\n3. Add node manually\n4. Add edge manually" << endl;
-		cout << "5. Print all nodes in network\n6. Compute Eigenvector Centrality\n7. placeholder\n8. Quit" << endl;
+		cout << "5. Print all nodes in network\n6. Compute Eigenvector Centrality\n7. Compute Degree Centrality\n8. Quit" << endl;
 		cout << "---------------------------\nSelect choice: " << endl;
 
 		string choiceInput = "";
@@ -141,6 +141,20 @@ int main(int argc, char* argv[]){
 			cout << "Print nodes to view new scores." << endl;
 			break;
 		case 7:
+			//compute degree centrality
+			cout << "Number of iterations to run: " << endl;
+			numberStr = "";
+			cin >> ws;
+			getline(cin, numberStr);
+			number = atof(numberStr.c_str());
+			cout << "Running..." << endl;
+
+			for (int i = 0; i < number; i++){
+				graph.CentralityDegree();
+			}
+
+			cout << "Ran " << number << " iterations." << endl;
+			cout << "Print nodes to view new scores." << endl;
 			break;
 		case 8:
 			//quit

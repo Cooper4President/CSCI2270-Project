@@ -40,4 +40,3 @@ None at this time.
 
 ## Open issues/bugs:
 
--Implementation of Eigenvector Centrality method may not always return correct values. Need to verify/fix mathematical correctness of implementation.
